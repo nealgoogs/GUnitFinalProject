@@ -5,34 +5,34 @@ Hardware Needs:
 MicroSD card
 Wifi Dongle
 
-![alt text](image-7.png)
+![alt text](Images/image-7.png)
 
 Software Needs:
-Raspberry Pi Imager
+Raspberry Pi Images/imager
 https://www.raspberrypi.com/software/
 
 Step 1: Insert microSD card into computer.
-Step 2: Use Raspberry Pi Imager
+Step 2: Use Raspberry Pi Images/imager
 Choose device, either pi 3 or pi 4
 Choose OS
 
-![alt text](image.png)
+![alt text](Images/image.png)
 
-![alt text](image-1.png)
+![alt text](Images/image-1.png)
 
-![alt text](image-8.png)
+![alt text](Images/image-8.png)
 
 Step 3: Yes edit settings
 
-![alt text](image-4.png)
+![alt text](Images/image-4.png)
 
 Fill in the username and password and configure wireless LAN info of your wifi. Make sure Hidden SSID is not checked.
 
-![alt text](image-5.png)
+![alt text](Images/image-5.png)
 
 Under services tab
 
-![alt text](image-6.png)
+![alt text](Images/image-6.png)
 
 Then write to MicroSD card.
 
@@ -107,6 +107,9 @@ Add permissions so you dont have to sudo everytime
 sudo usermod -aG i2c,gpio,plugdev $USER
 sudo reboot
 ```
+Also add the `I2C_mutex.py` code in this directory
+
+`I2C_mutex.py` found in Python Files in this repository
 
 Then to deal with DI_Sensors issues
 
