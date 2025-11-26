@@ -208,7 +208,7 @@ __marimo__/
 
 # Ignore extracted frames
 frames/
-
+dataset/
 # Ignore input videos
 *.mp4
 *.mov
