@@ -205,3 +205,10 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Ignore extracted frames
+frames/
+
+# Ignore input videos
+*.mp4
+*.mov
