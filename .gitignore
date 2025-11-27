@@ -212,3 +212,5 @@ dataset/
 # Ignore input videos
 *.mp4
 *.mov
+
+yolo11n.pt
