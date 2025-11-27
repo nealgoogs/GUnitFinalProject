@@ -1,8 +1,8 @@
 path: dataset
 
-train: train
-val: val
-test: test
+train: dataset/train/images
+val: dataset/val/images
+test: dataset/test/images
 
 nc: 2
 names:
