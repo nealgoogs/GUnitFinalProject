@@ -1,0 +1,10 @@
+path: dataset
+
+train: train
+val: val
+test: test
+
+nc: 2
+names:
+  0: bad_guy
+  1: vehicle
