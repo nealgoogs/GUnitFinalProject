@@ -212,6 +212,7 @@ dataset/
 # Ignore input videos
 *.mp4
 *.mov
-
+runs/
 yolo11n.pt
 yolo11s.pt
+yolo11m.pt

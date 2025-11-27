@@ -1,6 +1,7 @@
-train: dataset/train
-val: dataset/val
-test: dataset/test
+train: C:/Users/sahba/OneDrive/Desktop/GUnitFinalProject/dataset/images/train
+val: C:/Users/sahba/OneDrive/Desktop/GUnitFinalProject/dataset/images/val
+test: C:/Users/sahba/OneDrive/Desktop/GUnitFinalProject/dataset/images/test
 
-nc: 2
-names: ["bad_guy", "vehicle"]
+names:
+  0: bad_guy
+  1: vehicle
