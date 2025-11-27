@@ -1,7 +1,8 @@
-train: C:/Users/sahba/OneDrive/Desktop/GUnitFinalProject/dataset/images/train
-val: C:/Users/sahba/OneDrive/Desktop/GUnitFinalProject/dataset/images/val
-test: C:/Users/sahba/OneDrive/Desktop/GUnitFinalProject/dataset/images/test
+path: C:/Users/sahba/OneDrive/Desktop/GUnitFinalProject/dataset
 
-names:
-  0: bad_guy
-  1: vehicle
+train: images/train
+val: images/val
+test: images/test
+
+nc: 2
+names: ["bad_guy", "vehicle"]
