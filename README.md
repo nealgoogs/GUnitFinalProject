@@ -1,123 +1,66 @@
-# GUnitFinalProject
-CCSU final project robot ai class
+# How to Build and Run the ROS2 Nodes
 
-Hardware Needs:
-MicroSD card
-Wifi Dongle
+These are the exact commands required to build and run the ROS2 perception system nodes
+(camera publisher, YOLO detection, and AprilTag distance node).
 
-![alt text](Images/image-7.png)
+---
 
-Software Needs:
-Raspberry Pi Images/imager
-https://www.raspberrypi.com/software/
+## 🛠️ 1. Build the ROS2 Workspace
 
-Step 1: Insert microSD card into computer.
-Step 2: Use Raspberry Pi Images/imager
-Choose device, either pi 3 or pi 4
-Choose OS
+Open a terminal:
 
-![alt text](Images/image.png)
+```bash
+cd ~/GUnitFinalProject/ros2_ws
+colcon build
 
-![alt text](Images/image-1.png)
 
-![alt text](Images/image-8.png)
-
-Step 3: Yes edit settings
-
-![alt text](Images/image-4.png)
-
-Fill in the username and password and configure wireless LAN info of your wifi. Make sure Hidden SSID is not checked.
-
-![alt text](Images/image-5.png)
-
-Under services tab
-
-![alt text](Images/image-6.png)
-
-Then write to MicroSD card.
-
-Step 4: Insert microsd card into rasp pi. Make sure robot is set up and has power and wifi dongle is in usb slot. Give it 2 to 3 minutes to boot up.
-
-step 5: open up youre terminal. Run this command ssh `<username>`@raspberrypi.local
-
-Step 6: Make sure pi is updated with this
-
-``` bash
-sudo apt update && sudo apt upgrade -y
-sudo reboot
+source /opt/ros/jazzy/setup.bash
+source install/setup.bash
 ```
 
-________________________________________________
-Installing ROS2
-
-Run these commands
-
-```sudo apt install -y software-properties-common
-sudo add-apt-repository universe
-
-sudo apt update && sudo apt install -y curl gnupg2 lsb-release
-
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key \
-  -o /usr/share/keyrings/ros-archive-keyring.gpg
-
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \
-http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" \
-| sudo tee /etc/apt/sources.list.d/ros2.list
+Terminal Setup (Run this in every new terminal)
+```bash
+source /opt/ros/jazzy/setup.bash
+cd ~/GUnitFinalProject/ros2_ws
+source install/setup.bash
 ```
 
-No GUI Tools
+If doing enemies vs vehicles
 
-`sudo apt install -y ros-jazzy-ros-base`
-
-If you want GUI  with these tools Full Desktop (Rviz, Gazebo, Tools) Run this command instead
-`sudo apt install -y ros-jazzy-desktop`
-
-Add ROS environement to shell
-```
-echo "source /opt/ros/jazzy/setup.bash" >> ~/.bashrc
-source ~/.bashrc
+1. Terminal 1
+```bash
+ros2 run rpi_camera camera_publisher
 ```
 
-Test Installation
-`ros2 -h`
-
-Other testing
-
-One one terminal run this command
-`ros2 multicast receive`
-
-and on another terminal run this command
-`ros2 multicast send`
-
-_________________________________________________________________________
-Installing GoPiGo
-
-Run this command
-
-```
-sudo apt install -y python3-pip python3-rpi-lgpio python3-smbus i2c-tools git pigpio-tools python3-pigpio
-git clone https://github.com/DexterInd/GoPiGo3.git
+4. Terminal 2
+```bash
+ros2 run rpi_camera yolov8_node \
+  --ros-args -p model_path:={CHANGE PATH}
 ```
 
-CD into GoPiGo3/Software/Python
-`sudo pip3 install --break-system-packages -e .`
-
-Add permissions so you dont have to sudo everytime
+5. Terminal 3
+```bash
+ros2 topic echo /yolo/detections
+ros2 topic echo /camera/image_yolo
 ```
-sudo usermod -aG i2c,gpio,plugdev $USER
-sudo reboot
+
+If doing AprilTags
+
+1. Terminal 1
+```bash
+ros2 run rpi_camera camera_publisher
 ```
-Also add the `I2C_mutex.py` code in this directory
 
-`I2C_mutex.py` found in Python Files in this repository
+2. Terminal 2
+```bash
+ros2 run rpi_camera apriltag_node \
+  --ros-args -p tag_size:=0.05
+```
 
-Then to deal with DI_Sensors issues
-
-`git clone https://github.com/DexterInd/DI_Sensors.git ~/DI_Sensors`
-
-cd into DI_Sensors/Python/
-
-`sudo pip3 install --break-system-packages -e .`
-
-Finally copy the wasd.py file and test
+3. Terminal 3
+```bash
+ros2 topic echo /yolo/detections
+ros2 topic echo /apriltag/distance
+ros2 topic echo /apriltag/info
+```
 

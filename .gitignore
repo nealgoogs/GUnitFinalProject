@@ -216,3 +216,13 @@ runs/
 yolo11n.pt
 yolo11s.pt
 yolo11m.pt
+
+# --- ROS2 colcon build artifacts ---
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+
+
+# --- ROS2 / Python cache inside the package ---
+ros2_ws/src/rpi_camera/**/__pycache__/
+ros2_ws/src/rpi_camera/**/*.pyc
