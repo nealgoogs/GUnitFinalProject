@@ -64,3 +64,7 @@ ros2 topic echo /apriltag/distance
 ros2 topic echo /apriltag/info
 ```
 
+To see a livestream of the video
+```bash
+ros2 run web_video_server web_video_server
+```
